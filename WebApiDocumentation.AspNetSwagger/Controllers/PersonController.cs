@@ -1,39 +1,43 @@
-﻿using System;
+﻿using AutoPoco;
+using AutoPoco.DataSources;
+using AutoPoco.Engine;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using WebApiDocumentation.AspNetSwagger.Models;
 
 namespace WebApiDocumentation.AspNetSwagger.Controllers
 {
     public class PersonController : ApiController
     {
-        // GET: api/Person
-        public IEnumerable<string> Get()
+        private readonly IGenerationSessionFactory _factory;
+
+        public PersonController()
         {
-            return new string[] { "value1", "value2" };
+            _factory = AutoPocoContainer.Configure(x =>
+            {
+                x.Conventions(c =>
+                {
+                    c.UseDefaultConventions();
+                });
+                x.Include<PersonDetails>()
+                    .Setup(s => s.FirstName).Use<FirstNameSource>()
+                    .Setup(s => s.LastName).Use<LastNameSource>()
+                    .Setup(s => s.EmailAddress).Use<EmailAddressSource>();
+            });
+        }
+
+        // GET: api/Person
+        public IEnumerable<PersonDetails> Get()
+        {
+            var session = _factory.CreateSession();
+            return session.List<PersonDetails>(10).Get();
         }
 
         // GET: api/Person/5
-        public string Get(int id)
+        public PersonDetails Get(int id)
         {
-            return "value";
-        }
-
-        // POST: api/Person
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Person/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Person/5
-        public void Delete(int id)
-        {
+            var session = _factory.CreateSession();
+            return session.Single<PersonDetails>().Get();
         }
     }
 }
