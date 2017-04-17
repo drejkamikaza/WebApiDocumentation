@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDocumentation.HelpPage", "WebApiDocumentation.HelpPage\WebApiDocumentation.HelpPage.csproj", "{748E86FA-EC86-4D1C-B1D3-4F1FD993CC7A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDocumentation.CoreSwagger", "WebApiDocumentation.CoreSwagger\WebApiDocumentation.CoreSwagger.csproj", "{8FFE6B7D-08D6-4D73-A878-36813378F0DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiDocumentation.AspNetSwagger", "WebApiDocumentation.AspNetSwagger\WebApiDocumentation.AspNetSwagger.csproj", "{34F52883-5756-42B3-9550-2CD5596B4940}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{748E86FA-EC86-4D1C-B1D3-4F1FD993CC7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{748E86FA-EC86-4D1C-B1D3-4F1FD993CC7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{748E86FA-EC86-4D1C-B1D3-4F1FD993CC7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{748E86FA-EC86-4D1C-B1D3-4F1FD993CC7A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8FFE6B7D-08D6-4D73-A878-36813378F0DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8FFE6B7D-08D6-4D73-A878-36813378F0DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FFE6B7D-08D6-4D73-A878-36813378F0DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
