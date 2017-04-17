@@ -7,6 +7,9 @@ using WebApiDocumentation.AspNetSwagger.Models;
 
 namespace WebApiDocumentation.AspNetSwagger.Controllers
 {
+    /// <summary>
+    /// Person resource
+    /// </summary>
     public class PersonController : ApiController
     {
         private readonly IGenerationSessionFactory _factory;
@@ -26,14 +29,21 @@ namespace WebApiDocumentation.AspNetSwagger.Controllers
             });
         }
 
-        // GET: api/Person
+        /// <summary>
+        /// Get list on swagger
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<PersonDetails> Get()
         {
             var session = _factory.CreateSession();
             return session.List<PersonDetails>(10).Get();
         }
 
-        // GET: api/Person/5
+        /// <summary>
+        /// Get single person for swagger
+        /// </summary>
+        /// <param name="id">ID ID</param>
+        /// <returns>Returns something</returns>
         public PersonDetails Get(int id)
         {
             var session = _factory.CreateSession();

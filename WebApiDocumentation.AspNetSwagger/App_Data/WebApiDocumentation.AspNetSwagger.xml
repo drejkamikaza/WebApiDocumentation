@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApiDocumentation.AspNetSwagger</name>
+    </assembly>
+    <members>
+        <member name="T:WebApiDocumentation.AspNetSwagger.Controllers.PersonController">
+            <summary>
+            Person resource
+            </summary>
+        </member>
+        <member name="M:WebApiDocumentation.AspNetSwagger.Controllers.PersonController.Get">
+            <summary>
+            Get list on swagger
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApiDocumentation.AspNetSwagger.Controllers.PersonController.Get(System.Int32)">
+            <summary>
+            Get single person for swagger
+            </summary>
+            <param name="id">ID ID</param>
+            <returns>Returns something</returns>
+        </member>
+    </members>
+</doc>
