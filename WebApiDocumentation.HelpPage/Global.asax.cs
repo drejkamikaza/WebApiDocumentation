@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Mvc;
 
 namespace WebApiDocumentation.HelpPage
 {
@@ -6,6 +7,7 @@ namespace WebApiDocumentation.HelpPage
     {
         protected void Application_Start()
         {
+            AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }

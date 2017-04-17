@@ -7,10 +7,16 @@ using WebApiDocumentation.HelpPage.Models;
 
 namespace WebApiDocumentation.HelpPage.Controllers
 {
+    /// <summary>
+    /// Person details controller
+    /// </summary>
     public class PersonController : ApiController
     {
         private readonly IGenerationSessionFactory _factory;
 
+        /// <summary>
+        /// Create new Person default ctor
+        /// </summary>
         public PersonController()
         {
             _factory = AutoPocoContainer.Configure(x =>
@@ -26,14 +32,21 @@ namespace WebApiDocumentation.HelpPage.Controllers
             });
         }
 
-        // GET: api/Person
+        /// <summary>
+        /// Get list of Persons from local store
+        /// </summary>
+        /// <returns>Returns empty list or all persons</returns>
         public IList<PersonDetails> Get()
         {
             var session = _factory.CreateSession();
             return session.List<PersonDetails>(10).Get();
         }
 
-        // GET: api/Person/5
+        /// <summary>
+        /// Get single person
+        /// </summary>
+        /// <param name="id">Person ID</param>
+        /// <returns>Returns person details or null</returns>
         public Models.PersonDetails Get(int id)
         {
             var session = _factory.CreateSession();
