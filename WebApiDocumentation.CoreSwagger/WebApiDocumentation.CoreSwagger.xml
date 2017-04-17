@@ -4,6 +4,11 @@
         <name>WebApiDocumentation.CoreSwagger</name>
     </assembly>
     <members>
+        <member name="T:WebApiDocumentation.CoreSwagger.Controllers.PersonController">
+            <summary>
+            Version 1 Person Controller
+            </summary>
+        </member>
         <member name="M:WebApiDocumentation.CoreSwagger.Controllers.PersonController.Get">
             <summary>
             Get all the personal details
@@ -16,6 +21,24 @@
             </summary>
             <param name="id">ID</param>
             <returns>Returns null or specific person</returns>
+        </member>
+        <member name="T:WebApiDocumentation.CoreSwagger.Controllers.PersonV2Controller">
+            <summary>
+            Version 2 Person Controller
+            </summary>
+        </member>
+        <member name="M:WebApiDocumentation.CoreSwagger.Controllers.PersonV2Controller.Get">
+            <summary>
+            Version 2 get persons
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApiDocumentation.CoreSwagger.Controllers.PersonV2Controller.Get(System.Int32)">
+            <summary>
+            Version 2 get single person
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="T:WebApiDocumentation.CoreSwagger.Models.PersonDetails">
             <summary>

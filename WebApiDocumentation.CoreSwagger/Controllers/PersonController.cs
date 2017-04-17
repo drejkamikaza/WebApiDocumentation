@@ -4,7 +4,11 @@ using WebApiDocumentation.CoreSwagger.Models;
 
 namespace WebApiDocumentation.CoreSwagger.Controllers
 {
+    /// <summary>
+    /// Version 1 Person Controller
+    /// </summary>
     [Route("api/[controller]")]
+    [ApiVersion("1.0")]
     public class PersonController : Controller
     {
         /// <summary>

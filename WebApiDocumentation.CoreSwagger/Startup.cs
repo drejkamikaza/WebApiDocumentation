@@ -1,9 +1,14 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
 
 namespace WebApiDocumentation.CoreSwagger
 {
@@ -27,14 +32,46 @@ namespace WebApiDocumentation.CoreSwagger
             // Add framework services.
             services.AddMvc();
 
+            //Add API versioning
+            services.AddApiVersioning(o =>
+            {
+                o.AssumeDefaultVersionWhenUnspecified = true;
+                o.DefaultApiVersion = new ApiVersion(1, 0);
+                o.ApiVersionReader = new HeaderApiVersionReader("api-version");
+            });
+
             //Generate Swagger JSON document
             services.AddSwaggerGen(options =>
             {
                 options.DescribeAllEnumsAsStrings();
-                options.IgnoreObsoleteProperties();
-                options.IgnoreObsoleteActions();
                 options.IncludeXmlComments($"{ApplicationEnvironment.ApplicationBasePath}\\WebApiDocumentation.CoreSwagger.xml");
-                options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = ".NET Core API Documentation", Version = "v1" });
+                options.MultipleApiVersions(new Swashbuckle.Swagger.Model.Info[]
+                {
+                   new Swashbuckle.Swagger.Model.Info
+                   {
+                       Version = "1.0",
+                       Title = "API",
+                       Description = "A RESTful API to show Swagger and Swashbuckle V1"
+                   },
+                   new Swashbuckle.Swagger.Model.Info
+                   {
+                       Version = "2.0",
+                       Title = "API (version v2)",
+                       Description = "A RESTful API to show Swagger and Swashbuckle V2"
+                   }
+               }, (description, version) =>
+               {
+                   var controllerDesc = description.ActionDescriptor as ControllerActionDescriptor;
+                   if (controllerDesc == null)
+                       return false;
+
+                   var apiVersionAttrs = controllerDesc.ControllerTypeInfo?.CustomAttributes?.Where(ca => ca.AttributeType == typeof(ApiVersionAttribute) && ca.ConstructorArguments != null);
+                   if (apiVersionAttrs == null || !apiVersionAttrs.Any())
+                       return false;
+
+                   bool enabled = apiVersionAttrs.Any(ca => ca.ConstructorArguments.Any(arg => arg.Value is string && ((string)arg.Value).Equals(version, StringComparison.CurrentCultureIgnoreCase)));
+                   return enabled;
+               });
             });
         }
 
@@ -47,12 +84,13 @@ namespace WebApiDocumentation.CoreSwagger
             app.UseMvc();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
+            app.UseSwagger(routeTemplate: "swagger/{apiVersion}/swagger.json");
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Meetup Doc API v1");
+                options.SwaggerEndpoint("/swagger/1.0/swagger.json", "Meetup Doc API v1");
+                options.SwaggerEndpoint("/swagger/2.0/swagger.json", "Meetup Doc API v2");
             });
         }
     }
