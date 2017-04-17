@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApiDocumentation.CoreSwagger</name>
+    </assembly>
+    <members>
+        <member name="M:WebApiDocumentation.CoreSwagger.Controllers.PersonController.Get">
+            <summary>
+            Get all the personal details
+            </summary>
+            <returns>Returns empty list or all persons</returns>
+        </member>
+        <member name="M:WebApiDocumentation.CoreSwagger.Controllers.PersonController.Get(System.Int32)">
+            <summary>
+            Get single person
+            </summary>
+            <param name="id">ID</param>
+            <returns>Returns null or specific person</returns>
+        </member>
+        <member name="T:WebApiDocumentation.CoreSwagger.Models.PersonDetails">
+            <summary>
+            Details of Person API
+            </summary>
+        </member>
+        <member name="P:WebApiDocumentation.CoreSwagger.Models.PersonDetails.FirstName">
+            <summary>
+            First name
+            </summary>
+        </member>
+        <member name="P:WebApiDocumentation.CoreSwagger.Models.PersonDetails.LastName">
+            <summary>
+            Last name
+            </summary>
+        </member>
+        <member name="P:WebApiDocumentation.CoreSwagger.Models.PersonDetails.EmailAddress">
+            <summary>
+            Email address
+            </summary>
+        </member>
+    </members>
+</doc>

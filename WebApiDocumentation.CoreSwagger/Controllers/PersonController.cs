@@ -7,7 +7,10 @@ namespace WebApiDocumentation.CoreSwagger.Controllers
     [Route("api/[controller]")]
     public class PersonController : Controller
     {
-        // GET api/values
+        /// <summary>
+        /// Get all the personal details
+        /// </summary>
+        /// <returns>Returns empty list or all persons</returns>
         [HttpGet]
         public IEnumerable<PersonDetails> Get()
         {
@@ -20,7 +23,11 @@ namespace WebApiDocumentation.CoreSwagger.Controllers
             return data;
         }
 
-        // GET api/values/5
+        /// <summary>
+        /// Get single person
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns>Returns null or specific person</returns>
         [HttpGet("{id}")]
         public PersonDetails Get(int id)
         {
