@@ -8,3 +8,4 @@ https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-
 https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 https://github.com/domaindrivendev/Swashbuckle/blob/master/README.md
 https://autopoco.codeplex.com/
+http://codeofrob.com/entries/autopoco-v0.1-released.html
