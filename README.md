@@ -2,6 +2,7 @@
 Example how to document Web API in .NET using Web Api Help Page and Swashbuckle
 
 Source used for these examples
+
 http://blog.octo.com/en/design-a-rest-api/
 https://www.hanselman.com/blog/ASPNETCoreRESTfulWebAPIVersioningMadeEasy.aspx
 https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger
