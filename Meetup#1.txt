@@ -1,0 +1,40 @@
+Steps for Web API documentation Meetup:
+
+Help Page - WebApiDocumentation.HelpPage 
+- Create new Empty Web API project
+- Add new PersonController
+- Nuget AutoPoco package
+- Setup factory and session for Person Controller
+- Nuget Microsoft.AspNet.WebApi.HelpPage
+- Add AreaRegistration.RegisterAllAreas(); to Application_Start
+- Add XML documentation file
+- Add some comments on methods for controller
+- Setup help page configuration to load XML documentation - App_Data\WebApiDocumentation.HelpPage.xml
+
+
+ASP.NET Swagger
+- Create new Web API .net core project
+- Add new PersonController
+- Create some dummy data for controller
+- Add Swashbuckle version 5.5.3
+- Setup XML documentation - App_Data\WebApiDocumentation.AspNetSwagger.xml
+- Configure swagger to load from specific location - $"{System.AppDomain.CurrentDomain.BaseDirectory}App_Data\\WebApiDocumentation.AspNetSwagger.xml"
+
+
+ASP.NET Core Swagger
+- Create new Empty Web API project
+- Add new PersonController
+- Add AutoPoco nuget package
+- Setup factory and session for Person Controller
+- Add swagger nuget package - Swashbuckle.AspNetCore 1.0.0 - rc3
+- Add XML documentation on root location - ApplicationEnvironment.ApplicationBasePath
+- Configure swagger document with SwaggerGen extension method in Startup - ConfigureServices
+- Configure Swagger and Swagger endpoint to load document
+
+ASP.NET Core Swagger - with versioning
+- Add nuget package Microsoft.AspNetCore.Mvc.Versioning 1.0.3
+- Add new controller PersonV2Contrller with same route
+- Add to Startup - ConfigureServices API versioning
+- Configure multiple endpoints for Swagger - add version 2
+- Add nuget package Swashbuckle.SwaggerGen 6.0.0-beta902 for options.MultipleApiVersions extension method
+- Configure loading of specific version of documentation
