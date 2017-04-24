@@ -13,7 +13,7 @@ Help Page - WebApiDocumentation.HelpPage
 
 
 ASP.NET Swagger
-- Create new Web API .net core project
+- Create new Empty Web API ASP.NET project
 - Add new PersonController
 - Create some dummy data for controller
 - Add Swashbuckle version 5.5.3
