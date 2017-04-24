@@ -59,19 +59,21 @@ namespace WebApiDocumentation.CoreSwagger
                        Title = "API (version v2)",
                        Description = "A RESTful API to show Swagger and Swashbuckle V2"
                    }
-               }, (description, version) =>
-               {
-                   var controllerDesc = description.ActionDescriptor as ControllerActionDescriptor;
-                   if (controllerDesc == null)
-                       return false;
+                }, (description, version) =>
+                {
+                    var controllerDesc = description.ActionDescriptor as ControllerActionDescriptor;
+                    if (controllerDesc == null)
+                        return false;
 
-                   var apiVersionAttrs = controllerDesc.ControllerTypeInfo?.CustomAttributes?.Where(ca => ca.AttributeType == typeof(ApiVersionAttribute) && ca.ConstructorArguments != null);
-                   if (apiVersionAttrs == null || !apiVersionAttrs.Any())
-                       return false;
+                    var apiVersionAttrs = controllerDesc.ControllerTypeInfo?.CustomAttributes?.Where(ca => ca.AttributeType == typeof(ApiVersionAttribute) && ca.ConstructorArguments != null);
+                    if (apiVersionAttrs == null || !apiVersionAttrs.Any())
+                        return false;
 
-                   bool enabled = apiVersionAttrs.Any(ca => ca.ConstructorArguments.Any(arg => arg.Value is string && ((string)arg.Value).Equals(version, StringComparison.CurrentCultureIgnoreCase)));
-                   return enabled;
-               });
+                    bool enabled = apiVersionAttrs.Any(ca => ca.ConstructorArguments.Any(arg => arg.Value is string && ((string)arg.Value).Equals(version, StringComparison.CurrentCultureIgnoreCase)));
+                    return enabled;
+                });
+
+                options.OperationFilter<Swagger.IncludeApiVersioningFilter>();
             });
         }
 
