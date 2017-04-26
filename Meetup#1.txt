@@ -13,19 +13,19 @@ Help Page - WebApiDocumentation.HelpPage
 
 
 ASP.NET Swagger
-- Create new Empty Web API ASP.NET project
+- Create new Empty Web API project
 - Add new PersonController
-- Create some dummy data for controller
+- Add AutoPoco nuget package
+- Setup factory and session for Person Controller
 - Add Swashbuckle version 5.5.3
 - Setup XML documentation - App_Data\WebApiDocumentation.AspNetSwagger.xml
 - Configure swagger to load from specific location - $"{System.AppDomain.CurrentDomain.BaseDirectory}App_Data\\WebApiDocumentation.AspNetSwagger.xml"
 
 
 ASP.NET Core Swagger
-- Create new Empty Web API project
+- Create new Empty Web API ASP.NET project
 - Add new PersonController
-- Add AutoPoco nuget package
-- Setup factory and session for Person Controller
+- Create some dummy data for controller
 - Add swagger nuget package - Swashbuckle.AspNetCore 1.0.0 - rc3
 - Add XML documentation on root location - ApplicationEnvironment.ApplicationBasePath
 - Configure swagger document with SwaggerGen extension method in Startup - ConfigureServices
